@@ -29,6 +29,8 @@ handler.on('push', function (event) {
     event.payload.repository.name,
     event.payload.ref);
   console.log('modified')
-  runCommand('sh', ['./auto_build.sh'], console.log);
+  runCommand('sh', ['./auto_build.sh'], function(resp) {
+    console.log(resp)
+  });
 });
 
