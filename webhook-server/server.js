@@ -16,7 +16,7 @@ handler.on('error', function (err) {
   console.error('Error:', err.message)
 });
 
-function rumCommand( cmd, args, callback ){
+function runCommand( cmd, args, callback ){
     var child = spawn( cmd, args );
     var response = '';
     child.stdout.on('data', function( buffer ){ resp += buffer.toString(); });
