@@ -21,7 +21,7 @@ function runCommand( cmd, args, callback ){
     var resp = '';
     child.stdout.on('data', function( buffer ){ resp += buffer.toString(); });
     child.stderr.on('data', function( buffer ){ resp += buffer.toString(); });
-    child.stdout.on('close', function(){ callback( resp ) });
+    child.on('exit', function(){ callback( resp ) });
 }
 // 监听到push事件的时候执行我们的自动化脚本
 handler.on('push', function (event) {
