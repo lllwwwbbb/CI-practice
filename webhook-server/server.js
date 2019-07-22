@@ -18,7 +18,7 @@ handler.on('error', function (err) {
 
 function runCommand( cmd, args, callback ){
     var child = spawn( cmd, args );
-    var response = '';
+    var resp = '';
     child.stdout.on('data', function( buffer ){ resp += buffer.toString(); });
     child.stdout.on('end', function(){ callback( resp ) });
 }
