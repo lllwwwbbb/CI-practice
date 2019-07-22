@@ -20,6 +20,7 @@ function runCommand( cmd, args, callback ){
     var child = spawn( cmd, args );
     var resp = '';
     child.stdout.on('data', function( buffer ){ resp += buffer.toString(); });
+    child.stderr.on('data', function( buffer ){ resp += buffer.toString(); });
     child.stdout.on('end', function(){ callback( resp ) });
 }
 // 监听到push事件的时候执行我们的自动化脚本
