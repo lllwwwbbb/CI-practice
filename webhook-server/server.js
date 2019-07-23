@@ -21,6 +21,7 @@ handler.on('error', function (err) {
 function runCommand (cmd_with_args){
   vec = cmd_with_args.split(' ')
   console.log('[RUN COMMAND] ' + cmd_with_args)
+  // 将 stderr 也重定向到 stdout 中，使日志信息连贯
   spawnSync(vec[0], vec.slice(1), { stdio: [0, 1, 1] })
 }
 
