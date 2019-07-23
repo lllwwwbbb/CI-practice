@@ -28,14 +28,11 @@ handler.on('push', function (event) {
   console.log('Received a push event for %s to %s',
     event.payload.repository.name,
     event.payload.ref);
-  exec('sh ./auto_build.sh', { stdio: 'inherit' }); //, function(err, stdout, stderr) {
-  //  if (err) console.log(err)
-  //  console.log(stdout)
-  //  console.log(stderr)
-  //})
-  //runCommand('sh', ['./auto_build.sh'], function(resp) {
-  //  console.log(resp)
-  //});
-  //runCommand('sh', ['./auto_build.sh'], console.log) 
+  exec('./on_push.sh', {}, function(err, stdout, stderr) {
+    console.log(stdout)
+    if (err) console.error(err);
+    console.error(stderr)
+  })
+  spawn('pm2', ['reload', 'server'], { stdio: 'inherit' })
 });
 
