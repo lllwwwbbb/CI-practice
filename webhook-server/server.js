@@ -29,11 +29,7 @@ handler.on('push', function (event) {
   console.log('Received a push event for %s to %s',
     event.payload.repository.name,
     event.payload.ref);
-  execFile('./on_push.sh', { shell: true }, function(err, stdout, stderr) {
-    console.log(stdout)
-    if (err) console.error(err);
-    console.error(stderr)
-  })
+  spawn('sh', ['./on_push.sh'], { stdio: 'inherit' })
   spawn('pm2', ['reload', 'server'], { stdio: 'inherit' })
 });
 
