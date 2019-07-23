@@ -21,7 +21,7 @@ handler.on('error', function (err) {
 function runCommand (cmd_with_args){
   vec = cmd_with_args.split(' ')
   console.log('[RUN COMMAND] ' + cmd_with_args)
-  spawnSync(vec[0], vec.slice(1), { stdio: 'inherit' })
+  spawnSync(vec[0], vec.slice(1), { stdio: [0, 1, 1] })
 }
 
 // 监听到push事件的时候执行我们的自动化脚本
