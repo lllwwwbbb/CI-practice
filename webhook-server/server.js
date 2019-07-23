@@ -1,5 +1,6 @@
 var http = require('http');
 var spawn = require('child_process').spawn;
+var spawnSync = require('child_process').spawnSync;
 var createHandler = require('github-webhook-handler');
 
 // 下面填写的myscrect跟github webhooks配置一样，下一步会说；path是我们访问的路径
@@ -19,7 +20,7 @@ handler.on('error', function (err) {
 function runCommand (cmd_with_args){
   vec = cmd_with_args.split(' ')
   console.log('--run command-- ' + cmd_with_args)
-  spawn(vec[0], vec.slice(1), { stdio: 'inherit' })
+  spawnSync(vec[0], vec.slice(1), { stdio: 'inherit' })
 }
 
 // 监听到push事件的时候执行我们的自动化脚本
