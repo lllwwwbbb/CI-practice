@@ -4,4 +4,4 @@ git pull
 git checkout master
 
 cnpm i
-pm2 start server
+pm2 reload server
