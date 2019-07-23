@@ -19,12 +19,14 @@ handler.on('error', function (err) {
 
 function runCommand (cmd_with_args){
   vec = cmd_with_args.split(' ')
-  console.log('--run command-- ' + cmd_with_args)
+  console.log('[RUN COMMAND] ' + cmd_with_args)
   spawnSync(vec[0], vec.slice(1), { stdio: 'inherit' })
 }
 
 // 监听到push事件的时候执行我们的自动化脚本
 handler.on('push', function (event) {
+  var moment = require('moment');
+  console.log(moment().format('yyyy-mm-dd:hh:mm:ss'));
   console.log('Received a push event for %s to %s',
     event.payload.repository.name,
     event.payload.ref);
