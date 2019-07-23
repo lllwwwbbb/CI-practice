@@ -29,6 +29,6 @@ handler.on('push', function (event) {
     event.payload.repository.name,
     event.payload.ref);
   runCommand('sh ./on_push.sh')
-  runCommand('pm2 reload server')
+  runCommand('pm2 start server')
 });
 
