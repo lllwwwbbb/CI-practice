@@ -2,4 +2,4 @@ git reset --hard origin/master
 git clean -f
 git pull
 
-sh ./auto_build.sh
+sh -x ./auto_build.sh
