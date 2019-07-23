@@ -20,7 +20,7 @@ handler.on('error', function (err) {
 function runCommand( cmd, args, callback ){
     var child = spawn( cmd, args );
     var resp = '';
-    child.stdout.on('data', function( buffer ){ resp += buffer.toString(); });
+    child.stdout.on('data', function( buffer ){ console.log(buffer.toString()) });
     child.stdout.on('close', function(){ callback( resp ) });
 }
 // 监听到push事件的时候执行我们的自动化脚本
