@@ -1,4 +1,5 @@
 var http = require('http');
+var moment = require('moment');
 var spawn = require('child_process').spawn;
 var spawnSync = require('child_process').spawnSync;
 var createHandler = require('github-webhook-handler');
@@ -25,7 +26,7 @@ function runCommand (cmd_with_args){
 
 // 监听到push事件的时候执行我们的自动化脚本
 handler.on('push', function (event) {
-  var moment = require('moment');
+  console.log('-----------------------------'); 
   console.log('[TIME] ' + moment().format());
   console.log('Received a push event for %s to %s',
     event.payload.repository.name,
