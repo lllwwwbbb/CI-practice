@@ -1,2 +1,2 @@
-#! /bin/sh
+set -x
 cnpm i

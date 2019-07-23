@@ -31,7 +31,7 @@ handler.on('push', function (event) {
   console.log('Received a push event for %s to %s',
     event.payload.repository.name,
     event.payload.ref);
-  runCommand('sh -x ./on_push.sh')
+  runCommand('sh ./on_push.sh')
   runCommand('pm2 start server')
 });
 
