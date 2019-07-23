@@ -18,7 +18,7 @@ handler.on('error', function (err) {
 });
 
 function runCommand( cmd, args, callback ){
-    var child = spawn( cmd, args );
+    var child = spawn( cmd, args, { stdio: 'inherit' } );
     var resp = '';
     child.stdout.on('data', function( buffer ){ console.log(buffer.toString()) });
     child.stdout.on('close', function(){ callback( resp ) });
