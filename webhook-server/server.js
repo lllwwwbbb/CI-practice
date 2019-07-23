@@ -18,6 +18,7 @@ handler.on('error', function (err) {
 
 function runCommand (cmd_with_args){
   vec = cmd_with_args.split(' ')
+  console.log('--run command-- ' + cmd_with_args)
   spawn(vec[0], vec.slice(1), { stdio: 'inherit' })
 }
 
@@ -26,8 +27,6 @@ handler.on('push', function (event) {
   console.log('Received a push event for %s to %s',
     event.payload.repository.name,
     event.payload.ref);
-  //spawn('sh', ['./on_push.sh'], { stdio: 'inherit' })
-  //spawn('pm2', ['reload', 'server'], { stdio: 'inherit' })
   runCommand('sh ./on_push.sh')
   runCommand('pm2 reload server')
 });
