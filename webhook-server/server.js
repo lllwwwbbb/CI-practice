@@ -26,7 +26,7 @@ function runCommand (cmd_with_args){
 // 监听到push事件的时候执行我们的自动化脚本
 handler.on('push', function (event) {
   var moment = require('moment');
-  console.log(moment().format('yyyy-mm-dd:hh:mm:ss'));
+  console.log('[TIME] ' + moment().format());
   console.log('Received a push event for %s to %s',
     event.payload.repository.name,
     event.payload.ref);
