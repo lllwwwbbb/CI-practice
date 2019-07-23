@@ -28,7 +28,7 @@ handler.on('push', function (event) {
   console.log('Received a push event for %s to %s',
     event.payload.repository.name,
     event.payload.ref);
-  exec('sh ./auto_build.sh', { stdio: 'inherit' }, function(err, stdout, stderr) {
+  exec('sh ./auto_build.sh', { stdio: 'inherit' }); //, function(err, stdout, stderr) {
   //  if (err) console.log(err)
   //  console.log(stdout)
   //  console.log(stderr)
