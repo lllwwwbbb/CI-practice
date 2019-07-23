@@ -3,4 +3,5 @@ git clean -f
 git pull
 git checkout master
 
-pm2 reload server
+cnpm i
+pm2 start server
