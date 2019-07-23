@@ -1,5 +1,6 @@
 var http = require('http');
 var spawn = require('child_process').spawn;
+var exec = require('child_process').exec
 var createHandler = require('github-webhook-handler');
 
 // 下面填写的myscrect跟github webhooks配置一样，下一步会说；path是我们访问的路径
@@ -28,10 +29,14 @@ handler.on('push', function (event) {
   console.log('Received a push event for %s to %s',
     event.payload.repository.name,
     event.payload.ref);
-  console.log(console.log)
-  runCommand('sh', ['./auto_build.sh'], function(resp) {
-    console.log(resp)
-  });
+  exec('sh ./auto_build.sh', {}, function(err, stdout, stderr) {
+    if (err) console.log(err)
+    console.log(stdout)
+    console.log(stderr)
+  })
+  //runCommand('sh', ['./auto_build.sh'], function(resp) {
+  //  console.log(resp)
+  //});
   //runCommand('sh', ['./auto_build.sh'], console.log) 
 });
 
