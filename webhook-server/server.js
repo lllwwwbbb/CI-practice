@@ -33,9 +33,9 @@ handler.on('push', function (event) {
   //  console.log(stdout)
   //  console.log(stderr)
   //})
-  //runCommand('sh', ['./auto_build.sh'], function(resp) {
-  //  console.log(resp)
-  //});
-  runCommand('sh', ['./auto_build.sh'], console.log) 
+  runCommand('sh', ['./auto_build.sh'], function(resp) {
+    console.log(resp)
+  });
+  //runCommand('sh', ['./auto_build.sh'], console.log) 
 });
 
